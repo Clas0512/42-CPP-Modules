@@ -9,6 +9,6 @@ void    Weapon::setType(std::string newType){
     this->type = newType;
 }
 
-Weapon::Weapon(std::string weapon){
-    this->type = weapon;
+Weapon::Weapon(const std::string weapon){
+    type = weapon;
 }
