@@ -1,52 +1,36 @@
-#include <iostream>
-#include <fstream>
-#include <string>
+#include "rePlace.hpp"
 
 int main(int ac, char **av){
 
-    std::ifstream inputFile;
-    std::ofstream outputFile;
-    std::string replaceFileName;
-    std::string fileName;
-    std::size_t found;
-    std::string temp;
-    std::string s1;
-    std::string s2;
+    rePlace Zort;
+
     if (ac == 4)
     {
-        fileName = av[1];
-        replaceFileName = fileName + ".replace";
-        s1 = av[2];
-        s2 = av[3];
-        inputFile.open(fileName);
-        outputFile.open(replaceFileName);
-        if (!outputFile.is_open())
+        Zort.fileName = av[1];
+        Zort.replaceFileName = Zort.fileName + ".replace";
+        Zort.s1 = av[2];
+        Zort.s2 = av[3];
+        Zort.inputFile.open(Zort.fileName);
+        Zort.outputFile.open(Zort.replaceFileName);
+        if (!Zort.outputFile.is_open() || !Zort.inputFile.is_open())
         {
             std::cout << "ERROR: file cannot open!" << std::endl;
             return 0;
         }
-        if (!inputFile.is_open())
+        Zort.temp = "";
+        while (std::getline(Zort.inputFile, Zort.temp))
         {
-            std::cout << "ERROR: file cannot open!" << std::endl;
-            return 0;
-        }
-        while (std::getline(inputFile, temp))
-        {
-            std::cout << temp << std::endl;
-        }
-        inputFile.close();
-        inputFile.open(fileName);
-        temp = "";
-        while (std::getline(inputFile, temp))
-        {
-            found = temp.find(s1);
-            while (found != std::string::npos)
+            Zort.found = Zort.temp.find(Zort.s1);
+            while (Zort.found != std::string::npos)
             {
-                temp.replace(found, s1.length(), s2);
-                found = temp.find(s1);
+                Zort.temp.erase(Zort.found, Zort.s1.length());
+                Zort.temp.insert(Zort.found, Zort.s2);
+                Zort.found = Zort.temp.find(Zort.s1);
             }
-            outputFile << temp << std::endl;
+            Zort.outputFile << Zort.temp << std::endl;
         }
+        Zort.inputFile.close();
+        Zort.outputFile.close();
     }
     return 0;
 }
