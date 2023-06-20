@@ -1,4 +1,2 @@
-git :
-	git add .
-	git commit -m "makefile commit"
-	git push
+all	:
+	@python3 git.py

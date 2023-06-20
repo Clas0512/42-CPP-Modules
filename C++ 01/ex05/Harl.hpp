@@ -6,9 +6,8 @@
 class Harl{
 public:
     void    complain( std::string level );
-    void (*f[4])(void);
     std::string level[4];
-
+    void (Harl::*f[4])(void);
 private:
     void    debug( void );
     void    info( void );
