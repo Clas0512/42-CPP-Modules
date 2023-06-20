@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 
 int main(int ac, char **av){
 
@@ -12,8 +13,14 @@ int main(int ac, char **av){
         filename = av[1];
         s1 = av[2];
         s2 = av[3];
-        inputFile.open(filename);
-        
+        if (inputFile.is_open())
+        {
+            while (std::getline(inputFile, line))
+            {
+
+            }
+        }
+
     }
     return 0;
 }
