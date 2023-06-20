@@ -27,5 +27,6 @@ public:
     std::string getPhoneNumber();
     std::string getDarkestSecret();
 };
+    int isInt(std::string str);
 
 #endif

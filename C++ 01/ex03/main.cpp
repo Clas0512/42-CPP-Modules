@@ -12,10 +12,11 @@ int main()
         bob.attack();
     }
     {
-        Weapon club = Weapon("spiked club");
+        // Weapon club = Weapon("spiked club");
         HumanB jim("Jim");
-        jim.setWeapon(club);
+        // jim.setWeapon(club);
         jim.attack();
+        Weapon club = Weapon("spiked club");
         club.setType("zort club");
         jim.attack();
     }

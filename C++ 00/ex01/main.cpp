@@ -1,5 +1,7 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
+#include <cctype>
+
 
 void    table(PhoneBook phoneBook)
 {
@@ -48,6 +50,18 @@ int checkSlots(PhoneBook &phoneBook, int &firstId)
 	return (0);
 }
 
+int isInt(std::string str)
+{
+    int i = 0;
+    while (str[i])
+    {
+        if (!std::isdigit(str[i]))
+            return (0);
+        i++;
+    }
+    return (1);
+}
+
 void    addMenu(PhoneBook &phoneBook, int &firstId)
 {
     std::string name;
@@ -81,11 +95,21 @@ void    addMenu(PhoneBook &phoneBook, int &firstId)
     }
     std::cout << "Please enter a phone number: " << std::endl;
     std::cin >> phoneNumber;
+    while (!isInt(phoneNumber))
+    {
+        std::cout << "A phone number cannot include alphabetical characters" << std::endl;
+        std::cin >> phoneNumber;
+    }
     while (phoneNumber == "")
     {
         std::cout << "Phone number can't be empty" << std::endl;
         std::cout << "Please enter a phone number: " << std::endl;
         std::cin >> phoneNumber;
+        while (!isInt(phoneNumber))
+        {
+            std::cout << "A phone number cannot include alphabetical characters" << std::endl;
+            std::cin >> phoneNumber;
+        }
     }
     std::cout << "Please enter a darkest secret: " << std::endl;
     std::cin >> darkestSecret;
@@ -99,7 +123,6 @@ void    addMenu(PhoneBook &phoneBook, int &firstId)
     phoneBook.setContact(firstId - 1, name, surname, nickname, phoneNumber, darkestSecret);
     std::cout << "Contact added" << std::endl;
 }
-
 
 int main(int ac, char **av)
 {
@@ -123,10 +146,15 @@ int main(int ac, char **av)
         }
         else if (choose == "SEARCH")
         {
-            std::cout << "try in setcontact --- " << phoneBook.getContact(0).getName() << std::endl;
+            table(phoneBook);
             int id;
             std::cout << "Please enter contact id for see a contact informations: " << std::endl;
             std::cin >> chooseId;
+            while (!isInt(chooseId))
+            {
+                std::cout << "Please enter number: " << std::endl;
+                std::cin >> chooseId;
+            }
             while (std::stoi(chooseId) - 1 > 7 || std::stoi(chooseId) - 1 < 0)
             {
                 std::cout << "Error: Invalid id" << std::endl;
@@ -134,7 +162,6 @@ int main(int ac, char **av)
                 std::cin >> chooseId;
             }
             id = std::stoi(chooseId) - 1;
-            table(phoneBook);
             phoneBook.getContactInfo(id);
             continue;
         }

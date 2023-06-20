@@ -2,9 +2,12 @@
 
 int main()
 {
-    Zombie zombi = Zombie("zombi 1");
-    Zombie *zombiMom = newZombie("Zombi Mom");
-    zombiMom[0].announce();
+    Zombie *zombi = newZombie("zombi 1");
+    Zombie *zombiMom = new Zombie("Zombi Mom");
     randomChump("ADEM BERKE");
+    zombi->announce();
+    zombiMom->announce();
+    delete zombi;
+    delete zombiMom;
     return 0;
 }

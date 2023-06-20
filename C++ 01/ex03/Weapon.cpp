@@ -8,6 +8,14 @@ void    Weapon::setType(std::string newType){
     this->type = newType;
 }
 
+Weapon::Weapon()
+{
+}
+
+Weapon::~Weapon()
+{
+}
+
 Weapon::Weapon(const std::string weapon){
     type = weapon;
 }

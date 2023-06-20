@@ -10,6 +10,8 @@ class Weapon{
         void        setType(std::string newType);
         std::string getType();
         Weapon(std::string weapon);
+        Weapon();
+        ~Weapon();
 };
 
 #endif
