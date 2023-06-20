@@ -3,16 +3,17 @@
 
 #include <iostream>
 
-class Harl{
+class Harl
+{
 public:
-    void    complain( std::string level );
-    std::string level[4];
+    void complain(std::string level);
     void (Harl::*f[4])(void);
+
 private:
-    void    debug( void );
-    void    info( void );
-    void    warning( void );
-    void    error( void );
+    void debug(void);
+    void info(void);
+    void warning(void);
+    void error(void);
 };
 
 #endif
