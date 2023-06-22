@@ -24,30 +24,40 @@ void Harl::complain(std::string level)
 {
 	void (Harl::*f[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	switch (level)
+	int	zort = 0;
+
+	while (zort < 4)
 	{
-	case "DEBUG":
-		this->*f[0];
-		this->*f[1];
-		this->*f[2];
-		this->*f[3];
-		break;
+		if (level == levels[zort])
+			break ;
+		zort++;
+	}
 
-	case "INFO":
-		this->*f[1];
-		this->*f[2];
-		this->*f[3];
-		break;
+	switch (zort)
+	{
+		case 0:
+			(this->*f[0])();
+			(this->*f[1])();
+			(this->*f[2])();
+			(this->*f[3])();
+			break;
 
-	case "WARNING":
-		this->*f[2];
-		this->*f[3];
-		break;
+		case 1:
+			(this->*f[1])();
+			(this->*f[2])();
+			(this->*f[3])();
+			break;
 
-	case "":
-		this->*f[3];
-		break;
-	default:
-		break;
+		case 2:
+			(this->*f[2])();
+			(this->*f[3])();
+			break;
+
+		case 3:
+			(this->*f[3])();
+			break;
+
+		default:
+			break;
 	}
 }
