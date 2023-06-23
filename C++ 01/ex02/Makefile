@@ -2,9 +2,9 @@ NAME		= Brain
 
 SRC			= main.cpp
 
-COMPILER	= g++
+COMPILER	= c++
 
-FLAGS		= -Wall -Wextra -Werror
+FLAGS		= -Wall -Wextra -Werror -std=c++98
 
 all	: $(NAME)
 

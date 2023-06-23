@@ -1,5 +1,7 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
+#include <cctype>
+
 
 void    table(PhoneBook phoneBook)
 {
@@ -37,13 +39,14 @@ void    table(PhoneBook phoneBook)
 
 int checkSlots(PhoneBook &phoneBook, int &firstId)
 {
+	firstId++;
     for (int i = 0; i < 8; i++)
     {
         if (phoneBook.getContact(i).getName().length() < 1)
             return (i);
     }
-    if (firstId == 8)
-        firstId = 0;
+    if (firstId == 9)
+        firstId = 1;
 	return (0);
 }
 
@@ -67,58 +70,57 @@ void    addMenu(PhoneBook &phoneBook, int &firstId)
     std::string phoneNumber;
     std::string darkestSecret;
     std::cout << "Please enter a name: " << std::endl;
-    getline(std::cin, name);
+    std::cin >> name;
     while (name == "")
     {
         std::cout << "Name can't be empty" << std::endl;
         std::cout << "Please enter a name: " << std::endl;
-        getline(std::cin, name);
+        std::cin >> name;
     }
     std::cout << "Please enter a surname: " << std::endl;
-    getline(std::cin, surname);
+    std::cin >> surname;
     while (surname == "")
     {
         std::cout << "Surname can't be empty" << std::endl;
         std::cout << "Please enter a surname: " << std::endl;
-        getline(std::cin, surname);
+        std::cin >> surname;
     }
     std::cout << "Please enter a nickname: " << std::endl;
-    getline(std::cin, nickname);
+    std::cin >> nickname;
     while (nickname == "")
     {
         std::cout << "Nickname can't be empty" << std::endl;
         std::cout << "Please enter a nickname: " << std::endl;
-        getline(std::cin, nickname);
+        std::cin >> nickname;
     }
     std::cout << "Please enter a phone number: " << std::endl;
-    getline(std::cin, phoneNumber);
+    std::cin >> phoneNumber;
     while (!isInt(phoneNumber))
     {
         std::cout << "A phone number cannot include alphabetical characters" << std::endl;
-        getline(std::cin, phoneNumber);
+        std::cin >> phoneNumber;
     }
     while (phoneNumber == "")
     {
         std::cout << "Phone number can't be empty" << std::endl;
         std::cout << "Please enter a phone number: " << std::endl;
-        getline(std::cin, phoneNumber);
+        std::cin >> phoneNumber;
         while (!isInt(phoneNumber))
         {
             std::cout << "A phone number cannot include alphabetical characters" << std::endl;
-            getline(std::cin, phoneNumber);
+            std::cin >> phoneNumber;
         }
     }
     std::cout << "Please enter a darkest secret: " << std::endl;
-    getline(std::cin, darkestSecret);
+    std::cin >> darkestSecret;
     while (darkestSecret == "")
     {
         std::cout << "Darkest secret can't be empty" << std::endl;
         std::cout << "Please enter a dark secret: " << std::endl;
-        getline(std::cin, darkestSecret);
+        std::cin >> darkestSecret;
     }
 	checkSlots(phoneBook, firstId);
-    phoneBook.setContact(firstId, name, surname, nickname, phoneNumber, darkestSecret);
-    firstId++;
+    phoneBook.setContact(firstId - 1, name, surname, nickname, phoneNumber, darkestSecret);
     std::cout << "Contact added" << std::endl;
 }
 
@@ -134,14 +136,9 @@ int main(int ac, char **av)
     std::cout << "Welcome the PhoneBook" << std::endl;
     while (true)
     {
-        std::cout << "Please enter a command\n(ADD, SEARCH or EXIT): " << std::endl;
-        std::getline(std::cin, choose);
-        if (std::cin.eof() == 1)
-        {
-            std::cout << "You entered EOF.\nExiting...";
-            return 1;
-        }
-        else if (choose == "ADD")
+        std::cout << "Please enter a command: ADD, SEARCH or EXIT" << std::endl;
+        std::cin >> choose;
+        if (choose == "ADD")
         {
             table(phoneBook);
             addMenu(phoneBook, firstId);
@@ -152,19 +149,17 @@ int main(int ac, char **av)
             table(phoneBook);
             int id;
             std::cout << "Please enter contact id for see a contact informations: " << std::endl;
-            std::cout << "Enter index : ";
-            getline(std::cin, chooseId);
-            std::cout << std::endl;
+            std::cin >> chooseId;
             while (!isInt(chooseId))
             {
                 std::cout << "Please enter number: " << std::endl;
-                getline(std::cin, chooseId);
+                std::cin >> chooseId;
             }
             while (std::stoi(chooseId) - 1 > 7 || std::stoi(chooseId) - 1 < 0)
             {
                 std::cout << "Error: Invalid id" << std::endl;
                 std::cout << "Please enter contact id for see a contact informations: " << std::endl;
-                getline(std::cin, chooseId);
+                std::cin >> chooseId;
             }
             id = std::stoi(chooseId) - 1;
             phoneBook.getContactInfo(id);
@@ -174,7 +169,7 @@ int main(int ac, char **av)
             return (0);
         else
         {
-            std::cout << "\nError: Invalid command\n" << std::endl;
+            std::cout << "Error: Invalid command" << std::endl;
             continue;
         }
     }

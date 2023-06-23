@@ -1,6 +1,6 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void)
+ClapTrap::ClapTrap()
 {
     static int a;
     std::stringstream b;
@@ -9,9 +9,10 @@ ClapTrap::ClapTrap(void)
     b >> d;
     this->name = d;
     this->hitPoints = 10;
-    this->attackDamage = 0;
+    this->attackDamage = 9;
     this->energyPoints = 10;
     std::cout << "ClapTrap Constructor Start the <" << name << ">" << std::endl;
+    a++;
 }
 
 ClapTrap::ClapTrap(std::string name)
@@ -38,9 +39,11 @@ void	ClapTrap::attack(const std::string &target)
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	std::cout << "ClapTrap <" << name << "> takes <" << amount << "> points of damage!" << std::endl;
     if (amount - hitPoints >= 0)
+    {
         this->hitPoints -= amount;
+    	std::cout << "ClapTrap <" << name << "> takes <" << amount << "> points of damage!" << std::endl;
+    }
     else
     {
         this->hitPoints = 0;

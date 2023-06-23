@@ -1,11 +1,11 @@
 NAME		= megaphone
 SRC			= megaphone.cpp
-FLAGS		= -Wall -Wextra -Werror -std=c++98
-COMPILER	= c++
+FLAGS		= -Wall -Wextra -Werror
+COMPILER	= g++
 
 all : $(NAME)
 
-$(NAME) : $(SRC)
+$(NAME) :
 	@$(COMPILER) $(FLAGS) $(SRC) -o $(NAME)
 
 clean :

@@ -20,7 +20,7 @@ public:
 	void		setNickname(std::string nickname);
 	void		setPhoneNumber(std::string phoneNumber);
 	void		setDarkestSecret(std::string darkestSecret);
-	int         getIndex();
+	std::string	getIndex();
     std::string getName();
     std::string getSurname();
     std::string getNickname();

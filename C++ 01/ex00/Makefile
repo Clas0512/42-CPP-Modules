@@ -1,7 +1,7 @@
 NAME		= Zombie
 SRC			= main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
-FLAGS		= -Wall -Wextra -Werror
-COMPILER	= g++
+FLAGS		= -Wall -Wextra -Werror -std=c++98
+COMPILER	= c++
 
 all : $(NAME)
 

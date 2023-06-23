@@ -1,7 +1,7 @@
 NAME		= Horde
 SRC			= main.cpp Zombie.cpp zombieHorde.cpp
-FLAGS		= -Wall -Wextra -Werror
-COMPILER	= g++
+FLAGS		= -Wall -Wextra -Werror -std=c++98
+COMPILER	= c++
 
 all : $(NAME)
 
