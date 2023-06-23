@@ -30,9 +30,9 @@ void    Contact::setDarkestSecret(std::string darkestSecret)
     this->darkestSecret = darkestSecret;
 }
 
-std::string Contact::getIndex()
+int Contact::getIndex()
 { 
-    return (std::to_string(this->index));
+    return (this->index);
 }
 
 std::string Contact::getName()
