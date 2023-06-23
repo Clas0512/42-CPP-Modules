@@ -4,7 +4,7 @@
 int main(void)
 {
 	ClapTrap *clapTrapHorde = new ClapTrap[3];
-	ClapTrap target("ZZOrt");
+	ClapTrap target("Target Tarik");
 	for (int i = 0; i < 3; i++)
 	{
 		clapTrapHorde[i].attack(target.getName());
@@ -12,15 +12,19 @@ int main(void)
 	}
 	delete [] clapTrapHorde;
 	target.beRepaired(3);
-	std::cout << "--------------------------------" << std::endl;
+
+	std::cout << std::endl;
+
 	ScavTrap s;
-	s.attack("ZZOrt");
+	s.attack("Target Tarik");
 	s.beRepaired(10);
 	s.guardGate();
 	s.takeDamage(15);
-	std::cout << "--------------------------------" << std::endl;
+
+	std::cout << std::endl;
+
 	FragTrap f;
-	f.attack("ZZOrt");
+	f.attack("Target Tarik");
 	f.takeDamage(15);
 	f.beRepaired(10);
 	f.highFivesGuys();

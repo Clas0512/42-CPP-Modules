@@ -23,22 +23,23 @@ ClapTrap::ClapTrap(std::string name)
 	maxHP = 10;
 	energyPoints = 10;
 	attackDamage = 0;
-	std::cout << "<ClapTrap>" << name << " is created." << std::endl;
+	std::cout << "<ClapTrap> <Name Constructor>" << name << " is created." << std::endl;
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "<ClapTrap> " << name << " deleted." << std::endl; 
+	std::cout << "<ClapTrap> <destructor> " << name << " deleted." << std::endl; 
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copy)
 {
 	*this = copy;
-	std::cout << copy.name << "is cloned." << std::endl;
+	std::cout << "<Copy Constructor>" << copy.name << "is cloned." << std::endl;
 }
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &clapTrap)
 {
+	std::cout << "Operator Overload terminated" << std::endl;
 	this->name = clapTrap.name;
 	this->hitPoints = clapTrap.hitPoints;
 	this->energyPoints = clapTrap.energyPoints;
