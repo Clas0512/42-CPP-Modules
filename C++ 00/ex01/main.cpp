@@ -136,9 +136,10 @@ int main(int ac, char **av)
     {
         std::cout << "Please enter a command\n(ADD, SEARCH or EXIT): " << std::endl;
         std::getline(std::cin, choose);
-        if (choose == "")
+        if (std::cin.eof() == 1)
         {
-            continue;
+            std::cout << "You entered EOF.\nExiting...";
+            return 1;
         }
         else if (choose == "ADD")
         {
@@ -173,7 +174,7 @@ int main(int ac, char **av)
             return (0);
         else
         {
-            std::cout << "Error: Invalid command" << std::endl;
+            std::cout << "\nError: Invalid command\n" << std::endl;
             continue;
         }
     }

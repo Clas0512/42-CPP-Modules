@@ -5,7 +5,7 @@ COMPILE	= c++
 
 all : $(NAME)
 
-$(NAME) :
+$(NAME) :	$(SRC)
 	@$(COMPILE) $(FLAGS) $(SRC) -o $(NAME)
 
 clean :
