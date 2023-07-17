@@ -12,6 +12,7 @@ int main()
         bob.attack();
     }
     {
+        //asd 
         // Weapon club = Weapon("spiked club");
         HumanB jim("Jim");
         // jim.setWeapon(club);

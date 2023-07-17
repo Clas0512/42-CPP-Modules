@@ -9,5 +9,5 @@ int main()
     zombiMom->announce();
     delete zombi;
     delete zombiMom;
-    return 0;
+    return 1;
 }
