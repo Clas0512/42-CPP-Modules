@@ -1,25 +1,17 @@
 NAME = Fixed
 
-OBJ_DIR = ./trash/
-
 SRCS = Fixed.cpp main.cpp
-
-OBJS = $(addprefix $(OBJ_DIR), $(SRCS:.cpp=.o))
 
 CC = c++
 
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-RM = rm -fr
+RM = rm -rf
+
+$(NAME): $(SRCS)
+	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
 
 all: $(NAME)
-
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
-
-$(OBJ_DIR)%.o: %.cpp
-	mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJ_DIR)

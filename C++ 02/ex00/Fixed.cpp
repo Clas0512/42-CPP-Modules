@@ -35,11 +35,3 @@ void	Fixed::setRawBits( int const raw )
 	std::cout << "setRawBits member function called" << std::endl;
 	value = raw;
 }
-
-
-Fixed a;
-Fixed b;
-Fixed c(a);
-
-
-a = b = c;

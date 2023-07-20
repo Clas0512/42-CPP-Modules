@@ -1,6 +1,6 @@
 NAME = Fixed
 
-SRCS = Fixed.cpp Fixed.hpp main.cpp
+SRCS = Fixed.cpp main.cpp
 
 CC = c++
 
@@ -8,10 +8,10 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 RM = rm -rf
 
-all: $(NAME)
-
 $(NAME) : $(SRCS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+
+all: $(NAME)
 
 clean:
 	$(RM) $(NAME)

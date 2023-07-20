@@ -17,10 +17,4 @@ public:
 	void setRawBits( int const raw );
 };
 
-
-Fixed a(5);
-Fixed b(a);
-
-b = a;
-
 #endif

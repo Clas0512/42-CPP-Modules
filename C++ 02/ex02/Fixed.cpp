@@ -26,8 +26,7 @@ Fixed::Fixed(const int intToFix)
 Fixed::Fixed(const float floatToFix)
 {
 	std::cout << "Float constructor called" << std::endl;
-	float scaleFactor = pow(2, bits);
-    float scaledValue = floatToFix * scaleFactor;
+	float scaledValue = floatToFix * pow(2, bits);
     int roundedValue = static_cast<int>(roundf(scaledValue));
     this->value = roundedValue;
 }
