@@ -1,21 +1,21 @@
-NAME		= ClapTrap
+NAME	= ClapTrap
 
-SRC			= main.cpp ClapTrap.cpp
+SRCS	= ClapTrap.cpp main.cpp
 
-COMPILER	= c++
+CC		= c++
 
-FLAGS		= -Wall -Wextra -Werror -std=c++98
+FLAGS	= -Wall -Wextra -Werror -std=c++98
 
-all	: $(NAME)
+all		: $(NAME)
 
-$(NAME) : $(SRC)
-	@$(COMPILER) $(SRC) $(FLAGS) -o $(NAME)
-
-clean :
-	@rm -rf $(NAME)
+$(NAME) : $(SRCS)
+		@$(CC) $(FLAGS) $(SRCS) -o $(NAME)
+	
+clean	:
+		@rm -rf $(NAME)
 
 fclean	: clean
 
-re : clean all
+re		: fclean all
 
-.PHONY : all clean fclean re
+.PHONY	: all clean fclean re

@@ -1,15 +1,22 @@
 #include "ClapTrap.hpp"
 
-int main(void)
-{
-	ClapTrap *clapTrapHorde = new ClapTrap[3];
-	ClapTrap target("Daddy Melih");
-	for (int i = 0; i < 3; i++)
-	{
-		clapTrapHorde[i].attack(target.getName());
-		target.takeDamage(clapTrapHorde[i].getAttackDamage());
-	}
-	delete [] clapTrapHorde;
-	target.beRepaired(3);
-	return (0);
+int main(void){
+    
+    ClapTrap a;
+    ClapTrap b("Adem");
+    ClapTrap c(b);
+
+    a.attack(b.getName());
+    b.takeDamage(a.getAttackDamage());
+
+    std::cout << b.getName() << " hitPoints : " << b.getHitPoints() << std::endl;
+
+    std::cout << "Six hours later.." << std::endl;
+
+    b.beRepaired(20);
+
+    std::cout << b.getName() << " hitPoints : " << b.getHitPoints() << std::endl;
+
+    std::cout << c.getName() << std::endl;
+    return (0);
 }

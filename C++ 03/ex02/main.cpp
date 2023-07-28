@@ -1,32 +1,49 @@
-#include "ScavTrap.hpp"
 #include "FragTrap.hpp"
 
 int main(void)
 {
-	ClapTrap *clapTrapHorde = new ClapTrap[3];
-	ClapTrap target("Target Tarik");
-	for (int i = 0; i < 3; i++)
-	{
-		clapTrapHorde[i].attack(target.getName());
-		target.takeDamage(clapTrapHorde[i].getAttackDamage());
-	}
-	delete [] clapTrapHorde;
-	target.beRepaired(3);
+    ClapTrap a;
+    ClapTrap b("Adem");
+    ClapTrap c(b);
 
-	std::cout << std::endl;
+    std::cout << b.getName() << " hitPoints : " << b.getHitPoints() << std::endl;
 
-	ScavTrap s;
-	s.attack("Target Tarik");
-	s.beRepaired(10);
-	s.guardGate();
-	s.takeDamage(15);
+    a.attack(b.getName());
+    b.takeDamage(a.getAttackDamage());
+    std::cout << b.getName() << " hitPoints : " << b.getHitPoints() << std::endl;
+    std::cout << "Six hours later.." << std::endl;
+    b.beRepaired(20);
+    std::cout << b.getName() << " hitPoints : " << b.getHitPoints() << std::endl;
+    std::cout << c.getName() << std::endl;
 
-	std::cout << std::endl;
+    std::cout << std::endl;
 
-	FragTrap f;
-	f.attack("Target Tarik");
-	f.takeDamage(15);
-	f.beRepaired(10);
-	f.highFivesGuys();
-	return (0);
+    FragTrap d;
+    FragTrap dc(d);
+
+
+    std::cout << "d name:" << d.getName() << std::endl;
+    std::cout << "d hit:" << d.getHitPoints() << std::endl;
+    std::cout << "d AttackDamage:" << d.getAttackDamage() << std::endl;
+    std::cout << "d EnergyPoints:" << d.getEnergyPoints() << std::endl << std::endl;
+
+    std::cout << "dc name:" << dc.getName() << std::endl;
+    std::cout << "dc hit:" << dc.getHitPoints() << std::endl;
+    std::cout << "dc AttackDamage:" << dc.getAttackDamage() << std::endl;
+    std::cout << "dc EnergyPoints:" << dc.getEnergyPoints() << std::endl;
+    
+    d.attack(dc.getName());
+    dc.takeDamage(d.getAttackDamage());
+
+    std::cout << "d name:" << d.getName() << std::endl;
+    std::cout << "d hit:" << d.getHitPoints() << std::endl;
+    std::cout << "d AttackDamage:" << d.getAttackDamage() << std::endl;
+    std::cout << "d EnergyPoints:" << d.getEnergyPoints() << std::endl << std::endl;
+
+    std::cout << "dc name:" << dc.getName() << std::endl;
+    std::cout << "dc hit:" << dc.getHitPoints() << std::endl;
+    std::cout << "dc AttackDamage:" << dc.getAttackDamage() << std::endl;
+    std::cout << "dc EnergyPoints:" << dc.getEnergyPoints() << std::endl;
+
+    return (0);
 }
