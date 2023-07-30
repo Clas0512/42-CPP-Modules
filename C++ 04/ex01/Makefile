@@ -6,7 +6,7 @@ CC		= c++
 
 OBJS	= $(SRCS:.cpp=.o)
 
-FLAGS	= -Wall -Wextra -Werror -std=c++98
+FLAGS	= -std=c++98
 
 all	: $(NAME)
 

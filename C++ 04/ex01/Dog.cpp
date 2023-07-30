@@ -2,16 +2,16 @@
 
 Dog::Dog()
 {
-    type = "Dog";
     std::cout << "Dog Default Constructor Call" << std::endl;
-    thisMyBrain = new Brain();
+    type = "Dog";
+    thisIsMyBrain = new Brain();
 
 }
 
 Dog::~Dog()
 {
     std::cout << "Dog Default Destructor Call" << std::endl;
-    delete thisMyBrain;
+    delete thisIsMyBrain;
 }
 
 Dog::Dog(const Dog &copy)
@@ -24,12 +24,7 @@ Dog &Dog::operator=(const Dog &copy)
 {
     std::cout << "Dog Assignment Operator Overload Call" << std::endl;
     this->type = copy.type;
-
-}
-
-void    Dog::newBrain()
-{
-    std::cout << "Dog newBrain Method Call" << std::endl;
+    return (*this);
 }
 
 void    Dog::makeSound() const

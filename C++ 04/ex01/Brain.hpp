@@ -12,7 +12,6 @@ class Brain
 		Brain(const Brain &copy);
 		Brain &operator=(Brain const &copy);
 		~Brain();
-            
 };
 
 #endif

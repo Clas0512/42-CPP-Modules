@@ -7,7 +7,7 @@
 class Dog : public Animal
 {
     private:
-        Brain   *thisMyBrain;
+        Brain   *thisIsMyBrain;
     public:
         Dog();
         Dog(const Dog &copy);

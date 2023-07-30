@@ -2,13 +2,15 @@
 
 Cat::Cat()
 {
-    type = "Cat";
     std::cout << "Cat Default Constructor Call" << std::endl;
+    type = "Cat";
+    thisIsMyBrain = new Brain();
 }
 
 Cat::~Cat()
 {
     std::cout << "Cat Default Destructor Call" << std::endl;
+    delete thisIsMyBrain;
 }
 
 Cat::Cat(const Cat &copy)
