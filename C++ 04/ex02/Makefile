@@ -1,4 +1,4 @@
-NAME	= Brain
+NAME	= AAnimal
 
 SRCS	= $(wildcard *.cpp)
 
@@ -6,7 +6,7 @@ CC		= c++
 
 OBJS	= $(SRCS:.cpp=.o)
 
-FLAGS	= -std=c++98
+FLAGS	= -std=c++98 -Wall -Wextra -Werror
 
 all	: $(NAME)
 
