@@ -8,9 +8,9 @@ class Ice : public AMateria
 	public:
 		Ice();
 		~Ice();
+		AMateria *clone() const;
 		Ice(Ice const &copy);
 		Ice &operator=(Ice const &other);
-		AMateria *clone() const;
 		void use(ICharacter &target);
 };
 

@@ -2,11 +2,19 @@
 
 Ice::Ice()
 {
+    std::cout << "Ice Default Constructor Call" << std::endl;
     type = "ice";
 }
 
 Ice::~Ice()
-{}
+{
+    std::cout << "Ice Desctructor Call" << std::endl;
+}
+
+AMateria *Ice::clone() const
+{   
+	return (new Ice(*this));
+}
 
 Ice::Ice(Ice const &copy)
 {
@@ -17,11 +25,6 @@ Ice &	Ice::operator=(Ice const &other)
 {
 	this->type = other.type;
     return (*this);
-}
-
-AMateria *Ice::clone() const
-{   
-	return (new Ice());
 }
 
 void	Ice::use(ICharacter &target)

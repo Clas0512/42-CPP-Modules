@@ -1,19 +1,25 @@
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
 
-# include <iostream>
+# include "ICharacter.hpp"
+# include "Ice.hpp"
+# include "Cure.hpp"
 
-class Character
+class Character : public ICharacter
 {
-	public:
-		Character(void);
-		Character(** replace parameters **);
-		Character(Character const &instance);
-		Character &operator=(Character const &rhs);
-		~Character(void);
-
 	private:
-
+		std::string _name;
+		AMateria *inventory[4];
+		void *droppedToTheFloor[2147483647];
+	public:
+		~Character();
+		Character(std::string const &name);
+		Character(Character const &other);
+		Character &operator=(Character const &other);
+		std::string const &getName() const;
+		void equip(AMateria* mtr);
+		void unequip(int idx);
+		void use(int idx, ICharacter& target);
 };
 
 #endif

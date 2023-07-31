@@ -1,20 +1,29 @@
 #include "AMateria.hpp"
 
-AMateria::AMateria()
-{}  
+AMateria::AMateria() : type(" "){}
 
-std::string const & AMateria::getType() const
+std::string const &AMateria::getType() const
 {
-    return (&type);
+    return (type);
 }
 
-
-AMateria::AMateria(std::string const & type)
-{
-	
+AMateria::AMateria(std::string const &type){
+	this->type = type;
 }
 
-void	AMateria::use(ICharacter& target)
-{
-	
+AMateria::AMateria(AMateria const &copy){
+	*this = copy;
+}
+
+AMateria &AMateria::operator=(const AMateria &otherAMateria){
+	this->type = otherAMateria.type;
+	return *this;
+}
+
+AMateria::~AMateria(){
+	return ;
+}
+
+void AMateria::use(ICharacter& target){
+	std::cout << "AMateria " << this->type << " used on " << target.getName() << std::endl;
 }
