@@ -8,14 +8,14 @@ Bureaucrat::Bureaucrat() : _name("Anonymous"), _grade(150)
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
     if (grade > 150)
-        GradeTooLowException();
+        throw GradeTooLowException();
     else if (grade < 1)
-        GradeTooHighException();
+        throw GradeTooHighException();
     else
         std::cout << "Bureaucrat is constructed with name and grade" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(Bureaucrat const &copy) : _name(copy._name)
+Bureaucrat::Bureaucrat(Bureaucrat const &copy) : _name(copy._name + " Copy")
 {
     std::cout << "Copy Constructor Call" << std::endl;
     *this = copy;
@@ -61,8 +61,8 @@ void    Bureaucrat::signForm(Form &signForm) const
 {
     try
     {
-        signForm.beSigned(*this);
         std::cout << _name << " signs " << signForm.getName() << std::endl;
+        signForm.beSigned(*this);
     }
     catch(const std::exception& e)
     {

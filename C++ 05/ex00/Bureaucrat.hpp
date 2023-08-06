@@ -28,7 +28,7 @@ class Bureaucrat{
                 public:
                     virtual const char* what() const throw()
                     {
-                        return ("Too High Grade!");
+                        return ("Too Low Grade!");
                     };
         };
 };

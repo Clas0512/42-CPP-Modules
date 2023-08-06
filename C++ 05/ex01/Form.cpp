@@ -3,17 +3,21 @@
 Form::Form() : _name("Unknown"), _gradeToSign(150), _gradeToExec(150)
 {
     _signed = false;
-	std::cout << "Default Constructor Call" << std::endl;
+	std::cout << "Default Form Constructor Call" << std::endl;
 }
 
 Form::Form(int gradeToSign, int gradeToExec, std::string name) : _name(name), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)
 {
-    std::cout << "Special Constructor Call" << std::endl;
+    if (gradeToSign < 1 || gradeToSign > 150)
+        Bureaucrat::GradeTooHighException();
+    else if (gradeToExec < 1 || gradeToExec > 150)
+        Bureaucrat::GradeTooLowException();
+    std::cout << "Special Form Constructor Call" << std::endl;
 }
 
-Form::Form(Form const &copy) : _name(copy._name), _gradeToSign(copy._gradeToSign), _gradeToExec(copy._gradeToExec)
+Form::Form(Form const &copy) : _name(copy._name + " Copy"), _gradeToSign(copy._gradeToSign), _gradeToExec(copy._gradeToExec)
 {
-	std::cout << "Copy Constructor Call" << std::endl;
+	std::cout << "Copy Form Constructor Call" << std::endl;
     *this = copy;
 }
 
@@ -25,7 +29,7 @@ Form &Form::operator=(Form const &other)
 
 Form::~Form(void)
 {
-	std::cout << "Copy Destructor Call" << std::endl;
+	std::cout << "Form Destructor Call" << std::endl;
 }
 
 std::string Form::getName(void) const
@@ -52,8 +56,8 @@ void    Form::beSigned(Bureaucrat const &signer)
 {
     if (signer.getGrade() > getGradeToSign())
         throw Bureaucrat::GradeTooLowException();
-    else
-        std::cout << "Form " << getName() << " is signed by " << signer.getName() << "." << std::endl;
+    std::cout << "Form " << getName() << " is signed by " << signer.getName() << "." << std::endl;
+    _signed = true;
 }
 
 std::ostream& operator<<(std::ostream &o, const Form &ref)
