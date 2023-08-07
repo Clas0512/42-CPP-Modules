@@ -1,4 +1,5 @@
 #include "ShrubberyCreationForm.hpp"
+#include <fstream>
 
 ShrubberyCreationForm::ShrubberyCreationForm() : _target("no target")
 {
@@ -32,5 +33,23 @@ std::string ShrubberyCreationForm::getTarget() const
 
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor)
 {
-	
+	std::ofstream writeFile(getTarget() + "_shrubbery.txt");
+
+	int level = getTarget().length();
+
+    for (int i = 0; i < level; ++i)
+	{
+		for (int j = 0; j < level - i - 1; ++j){
+        	writeFile << " ";
+    	}
+        for (int k = 0; k < 2 * i + 1; ++k){
+        	writeFile << "*";
+    	}
+        writeFile << std::endl;
+	}
+    for (int z = 0; z < level - 1; ++z){
+        writeFile << " ";
+    }
+    writeFile << "*";
+    writeFile << std::endl;
 }

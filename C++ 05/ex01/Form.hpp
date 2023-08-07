@@ -3,6 +3,8 @@
 
 # include <iostream>
 # include "Bureaucrat.hpp"
+# include <fstream>
+# include <string>
 
 class Bureaucrat;
 

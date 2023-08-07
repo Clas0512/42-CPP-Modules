@@ -1,7 +1,6 @@
 #ifndef AFORM_HPP
 # define AFORM_HPP
 
-# include <iostream>
 # include "Bureaucrat.hpp"
 
 class Bureaucrat;
@@ -24,7 +23,6 @@ class AForm
 		int getGradeToSign() const ;
 		int getGradeToExec() const ;
 		void	beSigned(Bureaucrat const &signer);
-		virtual void	execute(Bureaucrat const & executor) const = 0;
 };
 std::ostream &operator<<(std::ostream &o, const AForm &ref);
 
