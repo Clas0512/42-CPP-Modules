@@ -2,7 +2,7 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
-# include "Form.hpp"
+# include "AForm.hpp"
 
 class Form;
 
@@ -34,7 +34,7 @@ class Bureaucrat{
                         return ("Too Low Grade!");
                     };
         };
-        void    signForm(Form &signForm) const;
+        void    signForm(AForm &signForm) const;
 };
 
 std::ostream& operator<<(std::ostream &o, const Bureaucrat &other);
