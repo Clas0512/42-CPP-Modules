@@ -2,6 +2,8 @@
 # define ROBOTOMYREQUESTFORM_HPP
 
 # include "AForm.hpp"
+# define PURPLE "\x1B[35m"
+# define END "\033[0m"
 
 class RobotomyRequestForm : public AForm
 {

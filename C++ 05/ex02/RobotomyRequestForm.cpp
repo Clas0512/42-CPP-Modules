@@ -32,5 +32,11 @@ std::string RobotomyRequestForm::getTarget() const
 
 void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	
+	int roboto;
+	std::cout << "Lak lak LAk lok lakkk!" << std::endl;
+	roboto = rand() % 2;
+	if (roboto)
+		std::cout << PURPLE << _target << END << " was robotomized" << std::endl;
+	else
+		std::cout << PURPLE << _target << END << " was not robotomized" << std::endl;
 }
