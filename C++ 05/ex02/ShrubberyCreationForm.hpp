@@ -2,6 +2,8 @@
 # define SHRUBBERYCREATIONFORM_HPP
 
 # include "AForm.hpp"
+# include <ctime>
+# include <cstdlib>
 
 class ShrubberyCreationForm : public AForm
 {
@@ -15,7 +17,7 @@ class ShrubberyCreationForm : public AForm
         ShrubberyCreationForm &operator=(ShrubberyCreationForm const &other);
         virtual ~ShrubberyCreationForm();
         std::string getTarget() const;
-        void    execute(Bureaucrat const & executor);
+        void    execute(Bureaucrat const & executor) const ;
 };
 
 #endif

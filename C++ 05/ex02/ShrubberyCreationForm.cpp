@@ -31,7 +31,7 @@ std::string ShrubberyCreationForm::getTarget() const
     return (_target);
 }
 
-void	ShrubberyCreationForm::execute(Bureaucrat const & executor)
+void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	std::ofstream writeFile(getTarget() + "_shrubbery.txt");
 

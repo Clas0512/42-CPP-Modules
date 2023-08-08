@@ -30,7 +30,7 @@ std::string RobotomyRequestForm::getTarget() const
     return (_target);
 }
 
-void	RobotomyRequestForm::execute(Bureaucrat const & executor)
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	
 }

@@ -1,4 +1,6 @@
 #include "PresidentialPardonForm.hpp"
+# define PURPLE "\x1B[35m"
+# define END "\033[0m"
 
 PresidentialPardonForm::PresidentialPardonForm() : _target("no target")
 {
@@ -23,6 +25,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 PresidentialPardonForm &	PresidentialPardonForm::operator=(PresidentialPardonForm const &other)
 {
 	this->zort = other.getTarget();
+	return (*this);
 }
 
 std::string PresidentialPardonForm::getTarget() const
@@ -30,7 +33,13 @@ std::string PresidentialPardonForm::getTarget() const
     return (_target);
 }
 
-void	PresidentialPardonForm::execute(Bureaucrat const & executor)
+void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
-	
+	int roboto;
+	std::cout << "Lak lak LAk lok lakkk!" << std::endl;
+	roboto = rand() % 2;
+	if (roboto)
+		std::cout << PURPLE << _target << END << " was robotomized" << std::endl;
+	else
+		std::cout << PURPLE << _target << END << " was not robotomized" << std::endl;
 }
