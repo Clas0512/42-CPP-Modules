@@ -23,6 +23,9 @@ class AForm
 		int getGradeToSign() const ;
 		int getGradeToExec() const ;
 		void	beSigned(Bureaucrat const &signer);
+		virtual void    execute(Bureaucrat const & executor) const = 0;
+		void	checkSignAndExec(Bureaucrat const &executor) const;
+
 };
 std::ostream &operator<<(std::ostream &o, const AForm &ref);
 

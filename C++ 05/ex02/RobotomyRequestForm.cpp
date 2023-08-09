@@ -10,7 +10,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm(72, 45, "Ro
 	std::cout << "Robotomy Target Constructor Call" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy)
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &copy) : _target("copy" + copy.getTarget())
 {
 	*this = copy;
 }
@@ -22,7 +22,8 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 RobotomyRequestForm &	RobotomyRequestForm::operator=(RobotomyRequestForm const &other)
 {
-	this->zort = other.getTarget();
+	(void) other;
+	return (*this);
 }
 
 std::string RobotomyRequestForm::getTarget() const
@@ -33,10 +34,13 @@ std::string RobotomyRequestForm::getTarget() const
 void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	int roboto;
-	std::cout << "Lak lak LAk lok lakkk!" << std::endl;
+	checkSignAndExec(executor);
+	std::cout << CLAY << "Lak lak LAk lok lakkk!" << END << std::endl;
+	srand(time(0));
 	roboto = rand() % 2;
+	std::cout << roboto << std::endl;
 	if (roboto)
-		std::cout << PURPLE << _target << END << " was robotomized" << std::endl;
+		std::cout << BLUE << _target << END << GREEN << " was robotomized" << END << std::endl;
 	else
-		std::cout << PURPLE << _target << END << " was not robotomized" << std::endl;
+		std::cout << BLUE << _target << END << RED << " was not robotomized" << END << std::endl;
 }

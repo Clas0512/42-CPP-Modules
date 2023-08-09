@@ -10,7 +10,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm(25, 5
 	std::cout << "Presidential Target Constructor Call" << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &copy)
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &copy) : _target("copy" + copy.getTarget())
 {
 	*this = copy;
 }
@@ -22,7 +22,7 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 PresidentialPardonForm &	PresidentialPardonForm::operator=(PresidentialPardonForm const &other)
 {
-	this->zort = other.getTarget();
+	(void) other;
 	return (*this);
 }
 
@@ -33,4 +33,6 @@ std::string PresidentialPardonForm::getTarget() const
 
 void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
+	checkSignAndExec(executor);
+	std::cout << BLUE << getTarget() << END << GREEN << " has been pardoned by Zaphod Beeblebrox." << END << std::endl;
 }

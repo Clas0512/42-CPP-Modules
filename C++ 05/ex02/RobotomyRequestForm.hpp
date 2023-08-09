@@ -1,15 +1,13 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
 # define ROBOTOMYREQUESTFORM_HPP
 
+# include <random>
 # include "AForm.hpp"
-# define PURPLE "\x1B[35m"
-# define END "\033[0m"
 
 class RobotomyRequestForm : public AForm
 {
     private:
         std::string const _target;
-        std::string zort;
     public:
         RobotomyRequestForm();
         RobotomyRequestForm(std::string target);

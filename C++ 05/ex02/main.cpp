@@ -1,29 +1,53 @@
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+
+void	nl()
+{
+	std::cout << std::endl;
+}
 
 int main()
 {
 	try
 	{
-		Bureaucrat A("Student anargul", 75);
-		Bureaucrat X("Staff X", 10);
-		Form c(3, 3, "Staff Assignment");
-		Form d(75, 3, "Student Assignment");
-		Form e(c);
-		Form f(d);
+		Bureaucrat A("Adem", 150);
+		nl();
+		AForm *z = new ShrubberyCreationForm("HAHAHAHA!");
+		nl();
+		A.signForm(*z);
+		nl();
+		A.executeForm(*z);
+		nl();
+	
+		delete z;
+	
+		nl();
+		nl();
 
-		std::cout << std::endl;
+		Bureaucrat B("B", 1);
+		AForm *az = new RobotomyRequestForm("zazaza!");
+		nl();
+		B.signForm(*az);
+		nl();
+		B.executeForm(*az);
+		nl();
+		delete az;
 
-		X.signForm(c);
-		std::cout << "c is signed ?" << std::endl << c.isSigned() << std::endl << std::endl;
+		nl();
+		nl();
 
-		X.signForm(d);
-		std::cout << "d is signed ?" << std::endl << d.isSigned() << std::endl << std::endl;
-		A.signForm(e);
-		std::cout << "e is signed ?" << std::endl << e.isSigned() << std::endl << std::endl;
-		A.signForm(f);
-		std::cout << "f is signed ?" << std::endl << f.isSigned() << std::endl << std::endl;
+		Bureaucrat C("C", 5);
+		AForm *abc = new PresidentialPardonForm("komkom..");
+		nl();
+		C.signForm(*abc);
+		nl();
+		C.executeForm(*abc);
+		nl();
+		delete abc;
 	}
-	catch (std::exception& e)
+	catch (const std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}

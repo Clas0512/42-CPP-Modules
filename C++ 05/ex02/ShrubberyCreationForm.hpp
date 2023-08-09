@@ -9,7 +9,6 @@ class ShrubberyCreationForm : public AForm
 {
     private:
         std::string const _target;
-        std::string zort;
     public:
         ShrubberyCreationForm();
         ShrubberyCreationForm(std::string target);

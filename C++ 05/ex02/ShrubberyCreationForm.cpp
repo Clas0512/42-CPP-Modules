@@ -11,7 +11,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : AForm(145, 13
 	std::cout << "Shrubbery Target Constructor Call" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy)
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const &copy) : _target("copy" + copy.getTarget())
 {
 	*this = copy;
 }
@@ -23,7 +23,8 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm &	ShrubberyCreationForm::operator=(ShrubberyCreationForm const &other)
 {
-	this->zort = other.getTarget();
+	(void) other;
+	return (*this);
 }
 
 std::string ShrubberyCreationForm::getTarget() const
@@ -33,10 +34,13 @@ std::string ShrubberyCreationForm::getTarget() const
 
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
+	int level;
+
+	checkSignAndExec(executor);
 	std::ofstream writeFile(getTarget() + "_shrubbery.txt");
-
-	int level = getTarget().length();
-
+	level = getTarget().length();
+	if (level < 3)
+		level = 3;
     for (int i = 0; i < level; ++i)
 	{
 		for (int j = 0; j < level - i - 1; ++j){
