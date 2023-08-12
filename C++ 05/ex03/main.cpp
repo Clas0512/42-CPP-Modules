@@ -10,8 +10,10 @@ int main()
 	{
 		Bureaucrat A("Adem", 1);
 		Intern i;
-		i.makeForm("shrubberyCreation", "ademberke");
-		A.signForm(i);
+		AForm *frm;
+		frm = i.makeForm("shrubberyCreation", "ademberke");
+		A.signForm(*frm);
+		A.executeForm(*frm);
 	}
 	catch (std::exception &e)
 	{

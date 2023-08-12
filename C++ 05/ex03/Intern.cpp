@@ -26,17 +26,17 @@ Intern::~Intern(void)
 	std::cout << "Intern Default Destructor" << std::endl;
 }
 
-static AForm *shrubberyCreation(std::string target)
+static AForm *shrubberyCreation(std::string const target)
 {
     return new ShrubberyCreationForm(target);
 }
 
-static AForm *robotomyRequest(std::string target)
+static AForm *robotomyRequest(std::string const target)
 {
     return new RobotomyRequestForm(target);   
 }
 
-static AForm *presidentialPardon(std::string target)
+static AForm *presidentialPardon(std::string const target)
 {
     return new PresidentialPardonForm (target);
 }
@@ -46,7 +46,7 @@ const char *Intern::UnknownFormException::what() const throw()
     return "Undefined Form Name";
 }
 
-AForm *Intern::makeForm(std::string formName, std::string target)
+AForm *Intern::makeForm(std::string const formName, std::string const target) const
 {
     AForm *r = NULL;
     std::string funcs[3] = {"shrubberyCreation", "robotomyRequest", "presidentialPardon"};

@@ -1,4 +1,4 @@
-NAME	= Bureaucrat
+NAME	= ExecuteForm
 
 SRCS	= $(wildcard *.cpp)
 

@@ -10,7 +10,7 @@ class Intern
 		Intern(Intern const &copy);
 		Intern &operator=(Intern const &other);
 		~Intern(void);
-        AForm *makeForm(std::string formName, std::string target);
+        AForm *makeForm(std::string const formName, std::string const target) const;
 		class UnknownFormException : public std::exception
 		{
 			public:

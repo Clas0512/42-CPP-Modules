@@ -3,11 +3,6 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 
-void	nl()
-{
-	std::cout << std::endl;
-}
-
 int main()
 {
 	try
