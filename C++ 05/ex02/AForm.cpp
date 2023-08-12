@@ -8,6 +8,7 @@ AForm::AForm() : _name("Unknown"), _gradeToSign(150), _gradeToExec(150)
 
 AForm::AForm(int gradeToSign, int gradeToExec, std::string name) : _name(name), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)
 {
+    _signed = false;
     if (gradeToSign < 1 || gradeToSign > 150)
         Bureaucrat::GradeTooHighException();
     else if (gradeToExec < 1 || gradeToExec > 150)

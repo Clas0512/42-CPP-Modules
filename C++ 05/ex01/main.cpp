@@ -1,31 +1,43 @@
 #include "Bureaucrat.hpp"
 
+void nl(void)
+{
+	std::cout << std::endl;
+}
+
 int main()
 {
 	try
 	{
-		Bureaucrat A("Student anargul", 75);
+		Bureaucrat A("Student anargul", 70);
 		Bureaucrat X("Staff X", 10);
 		Form c(3, 3, "Staff Assignment");
 		Form d(75, 3, "Student Assignment");
 		Form e(c);
 		Form f(d);
 
-		std::cout << std::endl;
-
+		nl();
+		A.signForm(d);
+		nl();
 		X.signForm(c);
-		std::cout << "c is signed ?" << std::endl << c.isSigned() << std::endl << std::endl;
-
+		nl();
+		std::cout << "c is signed ?" << std::endl << c.isSigned() << std::endl;
+		nl();
 		X.signForm(d);
-		std::cout << "d is signed ?" << std::endl << d.isSigned() << std::endl << std::endl;
+		nl();
+		std::cout << "d is signed ?" << std::endl << d.isSigned() << std::endl;
+		nl();
 		A.signForm(e);
-		std::cout << "e is signed ?" << std::endl << e.isSigned() << std::endl << std::endl;
+		nl();
+		std::cout << "e is signed ?" << std::endl << e.isSigned() << std::endl;
+		nl();
 		A.signForm(f);
-		std::cout << "f is signed ?" << std::endl << f.isSigned() << std::endl << std::endl;
+		nl();
+		std::cout << "f is signed ?" << std::endl << f.isSigned() << std::endl;
 	}
 	catch (std::exception& e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << END << std::endl;
 	}
 	return (0);
 }

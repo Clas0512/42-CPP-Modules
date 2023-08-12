@@ -2,20 +2,21 @@
 
 int main()
 {
-    Bureaucrat A("adem", 1);
 
-    std::cout << A.getName() << std::endl;
-    std::cout << A.getGrade() << std::endl;
+    Bureaucrat A("adem", 149);
+    std::cout << "A: " << A.getName() << std::endl;
+    std::cout << "A: " << A.getGrade() << std::endl;
 
     std::cout << A << std::endl;
 
     try
     {
-        A.incrementGrade();
+        A.decrementGrade();
+        A.decrementGrade();
     }
     catch(const std::exception& e)
     {
-        std::cout << e.what() << std::endl;
+        std::cout << RED << e.what() << END << std::endl;
     }
 
     std::cout << A.getGrade() << std::endl;

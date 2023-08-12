@@ -3,6 +3,12 @@
 
 # include <iostream>
 # include "Form.hpp"
+# define CLAY "\e[1;96m"
+# define GREEN "\e[1;92m"
+# define RED "\e[1;91m"
+# define END "\033[0m"
+# define BLUE "\e[1;104m"
+# define WHITE "\e[1;107m"
 
 class Form;
 

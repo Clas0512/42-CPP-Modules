@@ -61,12 +61,17 @@ void    Bureaucrat::signForm(Form &signForm) const
 {
     try
     {
-        std::cout << _name << " signs " << signForm.getName() << std::endl;
-        signForm.beSigned(*this);
+        if (signForm.isSigned() == false)
+        {
+            signForm.beSigned(*this);
+            std::cout << _name << GREEN << " signed " << END << signForm.getName() << std::endl;
+        }
+        else
+            std::cout << _name << " couldn't sign " << signForm.getName() << RED << " because " << END << "it's already signed." << std::endl;
     }
     catch(const std::exception& e)
     {
-        std::cout << e.what() << std::endl;
+        std::cout << _name << " couldn't sign " << signForm.getName() << RED << " because " << END << e.what() << std::endl;
     }
 }
 

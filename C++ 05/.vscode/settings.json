@@ -65,6 +65,9 @@
         "type_traits": "cpp",
         "typeinfo": "cpp",
         "utility": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "filesystem": "cpp"
     }
 }
