@@ -1,5 +1,7 @@
 {
     "files.associations": {
+        "*.excalidraw": "json",
+        "*.excalidrawlib": "json",
         "iosfwd": "cpp",
         "__bit_reference": "cpp",
         "__config": "cpp",
@@ -64,6 +66,8 @@
         "unordered_map": "cpp",
         "utility": "cpp",
         "vector": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "numeric": "cpp",
+        "random": "cpp"
     }
 }
