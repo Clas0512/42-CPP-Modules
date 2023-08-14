@@ -20,7 +20,7 @@ clean :
 	@rm -rf $(NAME)
 
 fclean : clean
-	@rm -rf *.o
+	@rm -rf *.o *.txt
 
 re	: fclean all
 
