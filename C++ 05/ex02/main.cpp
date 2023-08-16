@@ -15,7 +15,7 @@ int main()
 		std::cout << BLUE << "--------- Shrubbery ---------" << END << std::endl;
 		Bureaucrat A("Adem", 15);
 		nl();
-		AForm *z = new ShrubberyCreationForm("HAHAHAHA!");
+		AForm *z = new ShrubberyCreationForm("talhaaksoyfenabirkral");
 		nl();
 		A.signForm(*z);
 		nl();

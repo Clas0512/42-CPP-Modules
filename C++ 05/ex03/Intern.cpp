@@ -38,7 +38,7 @@ static AForm *robotomyRequest(std::string const target)
 
 static AForm *presidentialPardon(std::string const target)
 {
-    return new PresidentialPardonForm (target);
+    return new PresidentialPardonForm(target);
 }
 
 const char *Intern::UnknownFormException::what() const throw()

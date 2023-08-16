@@ -14,7 +14,7 @@ int main()
 		nl();
 		AForm *frm;
 		nl();
-		frm = i.makeForm("shrubberyCreation", "ademberke");
+		frm = i.makeForm("rasd", "ademberke");
 		nl();
 		A.signForm(*frm);
 		nl();
@@ -23,7 +23,7 @@ int main()
 	}
 	catch (std::exception &e)
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << RED << e.what() << END << std::endl;
 	}
 
 	return (0);
