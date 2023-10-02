@@ -22,6 +22,13 @@ ScalarConverter::~ScalarConverter()
 	std::cout << "Default Destructor Call" << std::endl;	
 }
 
+bool ScalarConverter::convert(std::string& str)
+{
+    return (check(str));
+}
+
+////////////       PRINT TYPE      ////////////
+
 static void putChar(const char& c)
 {
     std::cout << "char: '" << c << "'" << std::endl;
@@ -41,6 +48,10 @@ static void putDouble(const double& d)
 {
     std::cout << "double: " << d << std::endl;
 }
+
+////////////        END         ////////////
+
+
 
 static void charConstructor(const char *ltr)
 {
@@ -94,39 +105,33 @@ void	ScalarConverter::toDouble(const std::string& ltr)
 	
 }
 
-void	ScalarConverter::convert(const std::string& ltr)
+bool ScalarConverter::check(std::string& str)
 {
-    int i;
+    int dot;
+    int f;
 
-    i = 0;
-	if (ltr[i] && ltr.length() == 1 && ltr[0] <= 127 && ltr[0] >= 32)
+    dot = 0;
+    f = 0;
+    if (!(str.compare("+inf") && str.compare("+inff") &&
+            str.compare("-inf") && str.compare("-inff") &&
+            str.compare("nan") && str.compare("nanf")))
+        return (true);
+    else if (str.length() == 1)
+        return (true);
+    else if (str.length() > 1)
     {
-        ScalarConverter::charConstructor(ltr);
-        return ;
-    }
-    if (ltr[i] && (ltr[i] == '-' || ltr[i] == '+'))
-        i++;
-    while (ltr[i])
-    {
-        if (ltr[i] == '.')
+        for(int i = 0; i < (int)str.size(); i++)
         {
-            while (ltr[i])
-            {
-                if (ltr[i] == 'f')
-                {
-                    ScalarConverter::floatConstructor(ltr);
-                    return ;
-                }
-                if (!(ltr[i] >= 48 && ltr[i] <= 57))
-                    throw InputException();
-                i++;
-            }
-            ScalarConverter::doubleConstructor(ltr);
-            return ;
+            if (str[i] == '.')
+                dot++;
+            if (str[i] == 'f')
+                f++;
+            if(!isdigit(str[i]) &&
+                !(str[i] == 'f' && i == str.length() - 1 && f == 1) &&
+                !(str[i] == '.' && (i != str.length() - 1 && i != 0) && dot == 1))
+                return (false);
         }
-        if (!(ltr[i] >= 48 && ltr[i] <= 57))
-            throw InputException();
-        i++;
+        return (true);
     }
-    ScalarConverter::intConstructor(ltr);
+    return (false);
 }

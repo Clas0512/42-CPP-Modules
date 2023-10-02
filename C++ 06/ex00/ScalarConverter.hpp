@@ -6,14 +6,11 @@
 class ScalarConverter
 {
 	private:
-        static void toChar(const std::string& ltr);
-        static void toInt(const std::string& ltr);
-        static void toFloat(const std::string& ltr);
-        static void toDouble(const std::string& ltr);
-        static void charConstructor(const std::string& ltr);
-        static void intConstructor(const std::string& ltr);
-        static void floatConstructor(const std::string& ltr);
-        static void doubleConstructor(const std::string& ltr);
+        static bool check(std::string&);
+        static void toChar(const std::string&);
+        static void toInt(const std::string&);
+        static void toFloat(const std::string&);
+        static void toDouble(const std::string&);
         static void putChar(const char& c);
         static void putInt(const int& i);
         static void putFloat(const float& f);
@@ -27,8 +24,7 @@ class ScalarConverter
             public:
                 virtual const char* what() const throw(){ return ("Invalid Input!");}
         };
-        static void convert(const std::string& ltr);
-
+        static bool convert(std::string&);
 };
 
 #endif
