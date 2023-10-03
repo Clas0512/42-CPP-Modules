@@ -24,8 +24,44 @@ ScalarConverter::~ScalarConverter()
 
 bool ScalarConverter::convert(std::string& str)
 {
-    return (check(str));
+    int type;
+
+    type = check(str);
+    if (type == 0)
+        return (0);
+    else if (type == 2)
+        charConst(str);
+    else if (type == 3)
+        floatConst(str);
+    else if (type == 4)
+        doubleConst(str);
+    else if (type == 5)
+        intConst(str);
+    return (1);
 }
+
+void ScalarConverter::charConst(const std::string& str)
+{
+    char c;
+
+    c = 
+}
+
+void ScalarConverter::intConst(const std::string&)
+{
+        
+}
+
+void ScalarConverter::floatConst(const std::string&)
+{
+        
+}
+
+void ScalarConverter::doubleConst(const std::string&)
+{
+        
+}
+
 
 ////////////       PRINT TYPE      ////////////
 
@@ -51,61 +87,7 @@ static void putDouble(const double& d)
 
 ////////////        END         ////////////
 
-
-
-static void charConstructor(const char *ltr)
-{
-    putChar(ltr[0]);
-    putInt(ltr[0]);
-    char *end;
-    try
-    {
-        putFloat(strtof(ltr, &end));
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    
-
-}
-
-static void intConstructor(const std::string& ltr)
-{
-
-}
-
-static void floatConstructor(const std::string& ltr)
-{
-
-}
-
-static void doubleConstructor(const std::string& ltr)
-{
-
-}
-
-void	ScalarConverter::toChar(const std::string& ltr)
-{
-	
-}
-
-void	ScalarConverter::toInt(const std::string& ltr)
-{
-	
-}
-
-void	ScalarConverter::toFloat(const std::string& ltr)
-{
-	
-}
-
-void	ScalarConverter::toDouble(const std::string& ltr)
-{
-	
-}
-
-bool ScalarConverter::check(std::string& str)
+int ScalarConverter::check(std::string& str)
 {
     int dot;
     int f;
@@ -115,9 +97,9 @@ bool ScalarConverter::check(std::string& str)
     if (!(str.compare("+inf") && str.compare("+inff") &&
             str.compare("-inf") && str.compare("-inff") &&
             str.compare("nan") && str.compare("nanf")))
-        return (true);
+        return (1);     // inf
     else if (str.length() == 1)
-        return (true);
+        return (2);     // char
     else if (str.length() > 1)
     {
         for(int i = 0; i < (int)str.size(); i++)
@@ -128,10 +110,21 @@ bool ScalarConverter::check(std::string& str)
                 f++;
             if(!isdigit(str[i]) &&
                 !(str[i] == 'f' && i == str.length() - 1 && f == 1) &&
-                !(str[i] == '.' && (i != str.length() - 1 && i != 0) && dot == 1))
-                return (false);
+                !(str[i] == '.' && (i != str.length() - 1 && i != 0) && dot == 1) &&
+                !(str[i] == '-' && i == 0))
+                return (0);
         }
-        return (true);
+        if (f == 1)
+        {
+            if (dot == 0)
+                return (0);
+            else
+                return (3);     // float
+        }
+        else if (dot == 1)
+            return (4);     // double
+        return (5);      // int
     }
-    return (false);
+    return (0);
 }
+
