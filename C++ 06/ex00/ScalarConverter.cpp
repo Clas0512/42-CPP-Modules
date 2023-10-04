@@ -43,44 +43,72 @@ bool ScalarConverter::convert(std::string& str)
 void ScalarConverter::charConst(const std::string& str)
 {
     char c;
+    float f;
 
-    c = 
+    c = str[0];
+    putChar(c);
+    putInt(c);
+    try {
+        f = std::stof(str);
+        putFloat(f);
+    }
+    catch (const std::out_of_range& f){
+        std::cout << "out of range" << std::endl;
+    }
+    // putDouble();
 }
 
-void ScalarConverter::intConst(const std::string&)
+void ScalarConverter::intConst(const std::string& str)
+{
+    int i;
+    float f;
+
+    i = std::stoi(str);
+    putChar();
+    putInt(i);
+    try {
+        f = std::stof(str);
+        putFloat(f);
+    }
+    catch (const std::out_of_range& f){
+        std::cout << "out of range" << std::endl;
+    }
+}
+
+void ScalarConverter::floatConst(const std::string& str)
 {
         
 }
 
-void ScalarConverter::floatConst(const std::string&)
+void ScalarConverter::doubleConst(const std::string& str)
 {
-        
-}
-
-void ScalarConverter::doubleConst(const std::string&)
-{
-        
+    
 }
 
 
 ////////////       PRINT TYPE      ////////////
 
-static void putChar(const char& c)
+void ScalarConverter::putChar(void)
+{
+    std::cout << "char: '" << "Non displayable" << "'" << std::endl;
+}
+
+void ScalarConverter::putChar(const char& c)
 {
     std::cout << "char: '" << c << "'" << std::endl;
 }
 
-static void putInt(const int& i)
+void ScalarConverter::putInt(const int& i)
 {
     std::cout << "int: " << i << std::endl;
 }
 
-static void putFloat(const float& f)
+void ScalarConverter::putFloat(const float& f)
 {
-    std::cout << "float: " << f << std::endl;
+    std::cout << "float: " << f << "f" << std::endl;
 }
 
-static void putDouble(const double& d)
+void ScalarConverter::putDouble(const double& d)
 {
     std::cout << "double: " << d << std::endl;
 }
@@ -99,7 +127,11 @@ int ScalarConverter::check(std::string& str)
             str.compare("nan") && str.compare("nanf")))
         return (1);     // inf
     else if (str.length() == 1)
+    {
+        if (isdigit(str[0]))
+            return (5);     // int
         return (2);     // char
+    }
     else if (str.length() > 1)
     {
         for(int i = 0; i < (int)str.size(); i++)
