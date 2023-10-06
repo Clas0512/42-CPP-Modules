@@ -49,9 +49,10 @@ void ScalarConverter::charConst(const std::string& str)
     putChar(c);
     putInt(c);
     try {
-        f = std::stof(str);
+        f = static_cast<float>(str);
         putFloat(f);
     }
+    isPrint(str[0]);
     catch (const std::out_of_range& f){
         std::cout << "out of range" << std::endl;
     }
