@@ -5,13 +5,13 @@ ScalarConverter::ScalarConverter()
     std::cout << "Default Constructor Call" << std::endl;	
 }
 
-ScalarConverter::ScalarConverter(ScalarConverter const &copy)
+ScalarConverter::ScalarConverter(const ScalarConverter &copy)
 {
 	std::cout << "Copy Constructor Call" << std::endl;
     *this = copy;
 }
 
-ScalarConverter &ScalarConverter::operator=(ScalarConverter const &other)
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 {
     (void)other;
     return *this;

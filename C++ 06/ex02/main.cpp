@@ -4,15 +4,17 @@
 #include <ctime>
 #include <cstdlib>
 
-int main(void)
+int main(int ac, char **av)
 {
-    std::srand(std::time(0));
+    if (ac == 1)
+    {
+        std::srand(std::time(0));
 
-    Base *randomClass = generate();
+        Base *randomClass = generate();
 
-    identify(randomClass);
+        identify(randomClass);
 
-    delete randomClass;
-
+        delete randomClass;
+    }
     return (0);
 }
