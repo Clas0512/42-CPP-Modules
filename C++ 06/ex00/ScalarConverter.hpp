@@ -16,18 +16,12 @@ class ScalarConverter
                 static void intConst(const std::string&);
                 static void floatConst(const std::string&);
                 static void doubleConst(const std::string&);
+                static void otherConst(const std::string& str);
 	public:
 		ScalarConverter();
 		ScalarConverter(ScalarConverter const &copy);
 		ScalarConverter &operator=(ScalarConverter const &other);
 		~ScalarConverter();
-        class   InputException : public std::exception{
-            public:
-                virtual const char* what() const throw()
-                {
-                        return ("Invalid Input!");
-                }
-        };
         static bool convert(std::string&);
 };
 

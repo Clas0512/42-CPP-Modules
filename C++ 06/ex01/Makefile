@@ -1,6 +1,6 @@
-NAME		= Convert
+NAME		= Serialize
 
-SRCS		= main.cpp ScalarConverter.cpp
+SRCS		= main.cpp Serializer.cpp
 
 COMPILER	= c++
 

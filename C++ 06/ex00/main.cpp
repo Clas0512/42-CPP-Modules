@@ -7,10 +7,8 @@ int main(int ac, char **av)
     else
     {
         std::string str(av[1]);
-        if (ScalarConverter::convert(str))
-            std::cout << "true" << std::endl;
-        else
-            std::cout << "false" << std::endl;
+        if (!ScalarConverter::convert(str))
+            std::cout << "Invalid Input" << std::endl;
     }
     return (0);
 }

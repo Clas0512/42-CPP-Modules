@@ -37,7 +37,21 @@ bool ScalarConverter::convert(std::string& str)
         doubleConst(str);
     else if (type == 5)
         intConst(str);
+    else if (type == 1)
+        otherConst(str);
     return (1);
+}
+
+void ScalarConverter::otherConst(const std::string& str)
+{
+    if (str.compare("nanf") || str.compare("nan"))
+    {
+        std::cout << "char: impossible" << std::endl;
+        std::cout << "int: impossible" << std::endl;
+        std::cout << "float: " << str << "f" << std::endl;
+        std::cout << "double: " << str << std::endl;
+    }
+
 }
 
 void ScalarConverter::charConst(const std::string& str)
@@ -46,43 +60,47 @@ void ScalarConverter::charConst(const std::string& str)
     float f;
 
     c = str[0];
+
     putChar(c);
-    putInt(c);
-    try {
-        f = std::stof(str);
-        putFloat(f);
-    }
-    catch (const std::out_of_range& f){
-        std::cout << "out of range" << std::endl;
-    }
-    // putDouble();
+    putInt(static_cast<int>(c));
+    putFloat(static_cast<float>(c));
+    putDouble(static_cast<double>(c));
 }
 
 void ScalarConverter::intConst(const std::string& str)
 {
     int i;
-    float f;
 
     i = std::stoi(str);
-    putChar();
+
+    putChar(static_cast<char>(i));
     putInt(i);
-    try {
-        f = std::stof(str);
-        putFloat(f);
-    }
-    catch (const std::out_of_range& f){
-        std::cout << "out of range" << std::endl;
-    }
+    putFloat(static_cast<float>(i));
+    putDouble(static_cast<double>(i));
 }
 
 void ScalarConverter::floatConst(const std::string& str)
 {
-        
+    float f;
+
+    f = std::stof(str);
+
+    putChar(static_cast<char>(f));
+    putInt(static_cast<int>(f));
+    putFloat(f);
+    putDouble(static_cast<double>(f));
 }
 
 void ScalarConverter::doubleConst(const std::string& str)
 {
-    
+    double d;
+
+    d = std::stod(str);
+
+    putChar(static_cast<char>(d));
+    putInt(static_cast<int>(d));
+    putFloat(static_cast<float>(d));
+    putDouble(static_cast<char>(d));
 }
 
 
@@ -95,7 +113,10 @@ void ScalarConverter::putChar(void)
 
 void ScalarConverter::putChar(const char& c)
 {
-    std::cout << "char: '" << c << "'" << std::endl;
+    if (c <= 31 || c >= 127)
+        putChar();
+    else
+        std::cout << "char: '" << c << "'" << std::endl;
 }
 
 void ScalarConverter::putInt(const int& i)
@@ -105,12 +126,18 @@ void ScalarConverter::putInt(const int& i)
 
 void ScalarConverter::putFloat(const float& f)
 {
-    std::cout << "float: " << f << "f" << std::endl;
+    if (f != static_cast<int>(f))
+        std::cout << "float: " << f << "f" << std::endl;
+    else
+        std::cout << "float: " << f << ".0f" << std::endl;
 }
 
 void ScalarConverter::putDouble(const double& d)
 {
-    std::cout << "double: " << d << std::endl;
+    if (d != static_cast<int>(d))
+        std::cout << "double: " << d << std::endl;
+    else
+        std::cout << "double: " << d << ".0" << std::endl;
 }
 
 ////////////        END         ////////////
@@ -125,7 +152,7 @@ int ScalarConverter::check(std::string& str)
     if (!(str.compare("+inf") && str.compare("+inff") &&
             str.compare("-inf") && str.compare("-inff") &&
             str.compare("nan") && str.compare("nanf")))
-        return (1);     // inf
+                return (1);     // inf
     else if (str.length() == 1)
     {
         if (isdigit(str[0]))
@@ -137,7 +164,11 @@ int ScalarConverter::check(std::string& str)
         for(int i = 0; i < (int)str.size(); i++)
         {
             if (str[i] == '.')
+            {
                 dot++;
+                if (!isdigit(str[i + 1]))
+                    return (0);
+            }
             if (str[i] == 'f')
                 f++;
             if(!isdigit(str[i]) &&
