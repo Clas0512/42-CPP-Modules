@@ -1,4 +1,4 @@
-#include "Templates.cpp"
+#include "whatever.hpp"
 
 int main(void)
 {
