@@ -1,18 +1,13 @@
 #include <iostream>
 
 template<typename T>
-void swap(T a, T b)
+void swap(T &a, T &b)
 {
     T tmp;
-    std::cout << "before a: " << a << std::endl;
-    std::cout << "before b: " << b << std::endl;
 
     tmp = a;
     a = b;
     b = tmp;
-
-    std::cout << "after a: " << a << std::endl;
-    std::cout << "after b: " << b << std::endl;
 }
 
 template<typename Z>
