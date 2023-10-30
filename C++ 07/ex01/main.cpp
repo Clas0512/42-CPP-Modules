@@ -16,9 +16,6 @@ int main(void)
     int array[5] = {1, 2, 3, 4, 5};
     size_t g = 5;
 
-
     iter(array, g, sumWithOne);
-
-    iter(array, g, printInteger);
-    
+    iter(array, g, printInteger);   
 }
