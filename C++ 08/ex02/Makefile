@@ -1,4 +1,4 @@
-NAME	= Mutant
+NAME	= Iteri
 
 SRCS	= $(wildcard *.cpp)
 

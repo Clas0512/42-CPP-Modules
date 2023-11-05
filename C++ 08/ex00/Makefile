@@ -1,4 +1,4 @@
-NAME	= easyfind
+NAME	= Iteri
 
 SRCS	= $(wildcard *.cpp)
 
