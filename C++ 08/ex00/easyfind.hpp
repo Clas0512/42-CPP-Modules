@@ -16,7 +16,7 @@ class noInArray : public std::exception
 };
 
 template<typename T>
-typename T::iterator easyfind(T& first, int second)
+typename T::iterator easyfind(T first, int second)
 {
     typename T::iterator itr;
 

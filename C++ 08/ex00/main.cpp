@@ -11,13 +11,11 @@ int main()
        array.push_back(i);
     }
 
-    itr = easyfind(array, 4);
-
-    std::cout << "itr: " << *itr << std::endl;
-
     try {
-        itr = easyfind(array, 10);
+        itr = easyfind(array, 4);
+        std::cout << "itr: " << *itr << std::endl;
 
+        itr = easyfind(array, 10);
         std::cout << "itr: " << *itr << std::endl;
     }
     catch (noInArray &excpt)
