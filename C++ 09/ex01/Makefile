@@ -1,4 +1,4 @@
-NAME	= Iter
+NAME	= RPN
 
 SRCS	= $(wildcard *.cpp)
 

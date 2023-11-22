@@ -1,45 +1,59 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
+# include <map>
 # include <iostream>
-# include <sstream>
 # include <fstream>
-# include <vector>
+# include <sstream>
 
-namespace MyNamespace {
-        class Exception : public std::exception {
-                public:
-                        virtual const char* what() const throw() {
-                                return ("Error: ");
-                        };
-        };
+# define CSVFILENAME "data.csv"
+
+struct dateElements{
+	std::string dateStr;
+	int		year;
+	int		month;
+	int		day;
+	float	value;
 };
-
-using namespace MyNamespace;
 
 class BitcoinExchange
 {
 	private:
-                const float _value;
-                const std::string _year;
-                const std::string _month;
-                const std::string _day;
-        public:
-                BitcoinExchange(float value, std::string year,
-                        std::string month, std::string day);
-                float getValue();
-                std::string getYear();
-                std::string getMonth();
-                std::string getDay();
-                class CustomException : public MyNamespace::Exception {
-                        private:
-                                const char* _errorStr;
-                        public:
-                                CustomException(const char* errorStr) : _errorStr(errorStr) {};
-                                const char* what() const throw(){
-                                        return (this->_errorStr);
-                        }
-                };
+		std::string						csvFileName;
+		std::string						inputFileName;
+		std::ifstream					csvFile;
+		std::ifstream					inputFile;
+        std::map<std::string, float>	mapCsv;
+	public:
+		BitcoinExchange(std::string fileName);
+		BitcoinExchange(void);
+		BitcoinExchange(BitcoinExchange const &instance);
+		BitcoinExchange &operator=(BitcoinExchange const &rhs);
+		~BitcoinExchange(void);
+		void	locateCsvInMap(void);
+		void    checkInputLine(std::string line);
+		void	start(void);
+		std::map<std::string, float>	&getMap();
+
+		class MyException : public std::exception
+		{
+			private:
+				const char* errorString;
+			public:
+				MyException(const char *str) : errorString(str){};
+			const char* what() const throw()
+			{
+				return (errorString);
+			}
+		};
 };
+
+int	limitCheck(dateElements *elements);
+int strToSum(std::string str);
+dateElements *fillDateStruct(std::string dateStr);
+int *stringDateToInt(std::string stringDate);
+std::ifstream	openFile(std::string fileName);
+std::ifstream	openFile(void);
+void	calculateBitcoins();
 
 #endif

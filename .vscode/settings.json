@@ -68,7 +68,13 @@
     "vector": "cpp",
     "filesystem": "cpp",
     "numeric": "cpp",
-    "random": "cpp"
+    "random": "cpp",
+    "__tree": "cpp",
+    "__verbose_abort": "cpp",
+    "charconv": "cpp",
+    "clocale": "cpp",
+    "map": "cpp",
+    "variant": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "clang",
   "C_Cpp_Runner.cppCompilerPath": "clang++",
