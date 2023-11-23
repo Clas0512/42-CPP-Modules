@@ -1,21 +1,17 @@
 #include "BitcoinExchange.hpp"
 
-std::ifstream	openFile()
+void openFile(std::ifstream& file)
 {
-    std::ifstream returnFile;
-    returnFile.open(CSVFILENAME, std::ios::in);
-    if (!returnFile.is_open())
+    file.open(CSVFILENAME, std::ios::in);
+    if (!file.is_open())
         throw std::invalid_argument("Error: ivalid argument.");
-    return (returnFile);
 }
 
-std::ifstream	openFile(std::string fileName)
+void openFile(std::ifstream& file, const std::string& fileName)
 {
-    std::ifstream returnFile;
-    returnFile.open(fileName, std::ios::in);
-    if (!returnFile.is_open())
+    file.open(fileName, std::ios::in);
+    if (!file.is_open())
         throw std::invalid_argument("Error: ivalid argument.");
-    return (returnFile);
 }
 
 void    BitcoinExchange::checkInputLine(std::string line)

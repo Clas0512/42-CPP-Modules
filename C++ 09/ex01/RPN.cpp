@@ -57,8 +57,11 @@ std::string doInst(int first, int second, std::string oprtr)
 		returnStr = std::to_string(first - second);
 	if (oprtr == "*")
 		returnStr = std::to_string(first * second);
-	if (oprtr == "/")
+	if (oprtr == "/"){
+		if (second == 0)
+			throw RPN::ErrorException("Error: you cannot divide by 0");
 		returnStr = std::to_string(first / second);
+	}
 	return (returnStr);
 }
 

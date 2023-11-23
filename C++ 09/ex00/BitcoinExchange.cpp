@@ -4,8 +4,10 @@ BitcoinExchange::BitcoinExchange(void)
 {
 }
 
-BitcoinExchange::BitcoinExchange(std::string fileName) : csvFile(openFile()), inputFile(openFile(fileName))
+BitcoinExchange::BitcoinExchange(std::string fileName)
 {
+    openFile(csvFile);
+    openFile(inputFile, fileName);
     this->csvFileName = CSVFILENAME;
     this->inputFileName = fileName;
 }
@@ -25,8 +27,8 @@ BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &rhs)
         csvFile.close();
     if (this->inputFile.is_open())
         inputFile.close();
-	this->csvFile = openFile(rhs.csvFileName);
-    this->inputFile = openFile(rhs.inputFileName);
+	openFile(this->csvFile);
+    openFile(this->inputFile, rhs.inputFileName);
     this->mapCsv = rhs.mapCsv;
     return (*this);
 }

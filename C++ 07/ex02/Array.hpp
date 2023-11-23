@@ -27,10 +27,13 @@ class Array
 				mainArray = nullptr;
 		}
 		Array(const Array &copy){
+			this->mainArray = nullptr;
 			*this = copy;
 		}
 		Array &operator=(const Array &rhs) {
     		if (this != &rhs) {
+				if (this->mainArray != nullptr)
+					delete[] mainArray;
         		arraySize = rhs.arraySize;
         		if (arraySize > 0) {
             		mainArray = new T[arraySize];

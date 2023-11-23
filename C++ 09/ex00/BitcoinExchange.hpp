@@ -1,8 +1,8 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
-# include <map>
 # include <iostream>
+# include <map>
 # include <fstream>
 # include <sstream>
 
@@ -52,8 +52,8 @@ int	limitCheck(dateElements *elements);
 int strToSum(std::string str);
 dateElements *fillDateStruct(std::string dateStr);
 int *stringDateToInt(std::string stringDate);
-std::ifstream	openFile(std::string fileName);
-std::ifstream	openFile(void);
+void openFile(std::ifstream& file, const std::string& fileName);
+void openFile(std::ifstream& file);
 void	calculateBitcoins();
 
 #endif

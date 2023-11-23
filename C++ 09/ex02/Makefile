@@ -1,4 +1,4 @@
-NAME	= Iter
+NAME	= PmergeMe
 
 SRCS	= $(wildcard *.cpp)
 
