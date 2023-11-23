@@ -3,23 +3,15 @@
 bool	isNumber(std::string str)
 {
 	int	convertedInt;
-	if (str.length() == 1)
+	try
 	{
-		try
-		{
-			convertedInt = std::stoi(str);
-		}
-		catch(const std::exception& e)
-		{
-			return (false);
-		}
-		if (convertedInt > 9 || convertedInt < 0)
-			return (false);
-		else
-			return (true);
+		convertedInt = std::stoi(str);
 	}
-	else
+	catch(const std::exception& e)
+	{
 		return (false);
+	}
+	return (true);
 }
 
 bool	isOperator(std::string str)
@@ -39,6 +31,8 @@ void	RPN::check(void)
 	it = this->elements.begin();
 	for(; it != this->elements.end(); it++)
 	{
+		if ((*it).size() != 1)
+			throw RPN::ErrorException("Error: expression cannot contain anything except for an operator or number.");
 		if (isNumber(*it))
 			numberCount++;
 		if (isOperator(*it))
@@ -89,7 +83,6 @@ void	RPN::calculate(void)
 			}
 			if (stackk.size() < 2 || this->elements.size() <= 0)
 				throw ErrorException("Error: invalid arguments.");
-			std::cout << "first element: " << this->elements.front() << std::endl;
 			while (beginItr != endItr && isNumber(this->elements.front()) == false && stackk.size() >= 2)
 			{
 				int second = std::stoi(stackk.top());
@@ -97,9 +90,8 @@ void	RPN::calculate(void)
 				int first = std::stoi(stackk.top());
 				stackk.pop();
 				std::string oprtr = this->elements.front();
-				std::cout << "first: " << first << " second: " << second << " operator: " << oprtr << std::endl;
 				this->elements.pop_front();
-				this->elements.push_front(doInst(first, second, oprtr));
+				stackk.push(doInst(first, second, oprtr));
 				beginItr = this->elements.begin();
 			}
 			while (stackk.size() != 0)

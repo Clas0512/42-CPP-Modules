@@ -74,7 +74,8 @@
     "charconv": "cpp",
     "clocale": "cpp",
     "map": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "list": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "clang",
   "C_Cpp_Runner.cppCompilerPath": "clang++",
