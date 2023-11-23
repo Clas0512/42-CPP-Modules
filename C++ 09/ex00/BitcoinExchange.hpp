@@ -54,6 +54,5 @@ dateElements *fillDateStruct(std::string dateStr);
 int *stringDateToInt(std::string stringDate);
 void openFile(std::ifstream& file, const std::string& fileName);
 void openFile(std::ifstream& file);
-void	calculateBitcoins();
 
 #endif

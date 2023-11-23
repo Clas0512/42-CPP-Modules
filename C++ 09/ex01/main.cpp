@@ -6,11 +6,12 @@ int main(int ac, char **av)
     {
 		std::string str(av[1]);
         RPN		obj(str);
+		RPN		fake(obj);
 		try
 		{
-			obj.split();
-			obj.check();
-			obj.calculate();
+			fake.split();
+			fake.check();
+			fake.calculate();
 		}
 		catch(const std::exception &e)
 		{

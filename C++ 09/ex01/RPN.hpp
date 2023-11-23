@@ -13,10 +13,11 @@ class RPN : public std::deque<int>
         std::string		argument;
 		std::deque<std::string> elements;
     public:
-        RPN(std::string& str) : std::deque<int>(){
-			this->argument = str;
-		};
-        RPN(const RPN& copy) : std::deque<int>(copy){};
+		RPN(void);
+		RPN(const 	RPN& copy);
+		RPN &operator=(RPN const &rhs);
+		~RPN(void);
+        RPN(std::string& str);
 		void	split(void);
 		void	check(void);
 		void	calculate(void);

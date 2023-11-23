@@ -1,5 +1,38 @@
 #include "RPN.hpp"
 
+// --------------------------------------------------------------------------------
+
+RPN::RPN(void)
+{
+    std::cout << "Default Constructor Call" << std::endl;
+}
+
+RPN::RPN(std::string& str) : std::deque<int>()
+{
+	this->argument = str;
+}
+
+RPN::RPN(const 	RPN& copy) : std::deque<int>(copy)
+{
+	this->argument = copy.argument;
+}
+
+RPN &RPN::operator=(RPN const &rhs)
+{
+    std::cout << "Operator Overload Call" << std::endl;
+	this->argument = rhs.argument;
+	return (*this);
+}
+
+RPN::~RPN(void)
+{
+    std::cout << "Default Destructor Call" << std::endl;
+}
+
+
+// --------------------------------------------------------------------------------
+
+
 bool	isNumber(std::string str)
 {
 	int	convertedInt;

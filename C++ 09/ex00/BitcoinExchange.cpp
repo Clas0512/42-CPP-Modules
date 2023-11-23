@@ -2,6 +2,9 @@
 
 BitcoinExchange::BitcoinExchange(void)
 {
+    std::cout << "Default Constructor Call" << std::endl;
+    openFile(csvFile);
+
 }
 
 BitcoinExchange::BitcoinExchange(std::string fileName)
@@ -14,15 +17,22 @@ BitcoinExchange::BitcoinExchange(std::string fileName)
 
 BitcoinExchange::BitcoinExchange(BitcoinExchange const &instance)
 {
+    std::cout << "Copy Constructor Call" << std::endl;
     *this = instance;
 }
 
 BitcoinExchange::~BitcoinExchange(void)
 {
+    std::cout << "Default Destructor Call" << std::endl;
+    if (this->csvFile.is_open())
+        csvFile.close();
+    if (this->inputFile.is_open())
+        inputFile.close();
 }
 
 BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &rhs)
 {
+    std::cout << "Operator Overload Call" << std::endl;
     if (this->csvFile.is_open())
         csvFile.close();
     if (this->inputFile.is_open())
@@ -65,18 +75,6 @@ void    BitcoinExchange::locateCsvInMap(void)
 std::map<std::string, float> &BitcoinExchange::getMap()
 {
     return (this->mapCsv);
-}
-
-float   dateMatchFinder(std::string date, std::map<std::string, float> &mapCsv)
-{
-    (void)date;
-    (void)mapCsv;
-    // std::map<std::string, float>::iterator its = mapCsv.begin();
-    // for (; its != mapCsv.end(); its++)
-    // {
-    //     its->first
-    // }
-    return (0);
 }
 
 void	BitcoinExchange::start(void)
@@ -157,9 +155,4 @@ void	BitcoinExchange::start(void)
         }
         delete inputInline;
     }
-}
-
-void	calculateBitcoins()
-{
-
 }
