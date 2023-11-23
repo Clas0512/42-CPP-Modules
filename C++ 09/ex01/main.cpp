@@ -4,9 +4,8 @@ int main(int ac, char **av)
 {
     if (ac == 2)
     {
-        RPN		obj(av[1]);
-        std::string		*elements;
-
+		std::string str(av[1]);
+        RPN		obj(str);
 		try
 		{
 			obj.split();

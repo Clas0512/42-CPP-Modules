@@ -2,6 +2,7 @@
 # define RPN_HPP
 
 #include <iostream>
+#include <string>
 #include <sstream>
 #include <deque>
 #include <stack>
@@ -12,7 +13,9 @@ class RPN : public std::deque<int>
         std::string		argument;
 		std::deque<std::string> elements;
     public:
-        RPN(char *str) : argument(str), std::deque<int>(){};
+        RPN(std::string& str) : std::deque<int>(){
+			this->argument = str;
+		};
         RPN(const RPN& copy) : std::deque<int>(copy){};
 		void	split(void);
 		void	check(void);
