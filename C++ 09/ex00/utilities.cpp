@@ -26,7 +26,12 @@ int limitCheck(dateElements *elements)
 {
     if (elements->year < 2009 || elements->year > 2023)
         return (1);
+    if (elements->year % 4 == 0 && elements->month == 2 && elements->day > 29)
+        return (1);
     if (!(elements->year % 4 == 0) && elements->month == 2 && elements->day > 28)
+        return (1);
+    if ((elements->month == 4 || elements->month == 6 || elements->month == 9 || elements->month == 11) &&
+        elements->day > 30)
         return (1);
     if (elements->day > 31 || elements->day < 1)
         return (1);
