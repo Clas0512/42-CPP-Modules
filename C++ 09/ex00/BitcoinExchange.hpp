@@ -48,11 +48,12 @@ class BitcoinExchange
 		};
 };
 
-int	limitCheck(dateElements *elements);
-int strToSum(std::string str);
+void	checkValue(std::string& valueStr);
+int		limitCheck(dateElements *elements);
+int		strToSum(std::string str);
 dateElements *fillDateStruct(std::string dateStr);
-int *stringDateToInt(std::string stringDate);
-void openFile(std::ifstream& file, const std::string& fileName);
-void openFile(std::ifstream& file);
+int		*stringDateToInt(std::string stringDate);
+void	openFile(std::ifstream& file, const std::string& fileName);
+void	openFile(std::ifstream& file);
 
 #endif

@@ -26,7 +26,6 @@ RPN &RPN::operator=(RPN const &rhs)
 
 RPN::~RPN(void)
 {
-    std::cout << "Default Destructor Call" << std::endl;
 }
 
 

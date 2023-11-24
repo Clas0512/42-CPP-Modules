@@ -27,7 +27,6 @@ PmergeMe &PmergeMe::operator=(PmergeMe const &rhs)
 
 PmergeMe::~PmergeMe()
 {
-    std::cout << "Default Destructor Call" << std::endl;
     delete[] seq;
 }
 

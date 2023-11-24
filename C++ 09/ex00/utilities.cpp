@@ -26,6 +26,8 @@ int limitCheck(dateElements *elements)
 {
     if (elements->year < 2009 || elements->year > 2023)
         return (1);
+    if (!(elements->year % 4 == 0) && elements->month == 2 && elements->day > 28)
+        return (1);
     if (elements->day > 31 || elements->day < 1)
         return (1);
     if (elements->month < 1 || elements->month > 12)
@@ -66,6 +68,28 @@ dateElements *fillDateStruct(std::string dateStr)
     returnValue->month = std::stoi(dateStr.substr(index + 1, 2));
     returnValue->day = std::stoi(dateStr.substr(index + 4, 2));
     return (returnValue);
+}
+
+void    checkValue(std::string& valueStr)
+{
+    int dot = 0;
+
+    for (int i = 0; valueStr[i]; i++)
+    {
+        if (valueStr[i] == '-')
+            throw BitcoinExchange::MyException("Error: not a positive number.");
+        if ((i == 0 && valueStr[i] == '.') || dot > 1)
+            throw BitcoinExchange::MyException("Error: invalid value.");
+        if (!isdigit(valueStr[i]) && valueStr[i] != '.' )
+            throw BitcoinExchange::MyException("Error: invalid value.");
+        if (valueStr[i] == '.')
+        {
+            dot++;
+            if (!isdigit(valueStr[i + 1]))
+                throw BitcoinExchange::MyException("Error: invalid value.");
+        }
+    }
+    
 }
 
 int *stringDateToInt(std::string stringDate)

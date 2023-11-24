@@ -24,6 +24,6 @@ int main(int ac, char **av)
         }
     }
     else
-        std::cout << "Error: please enter 3 or more argument." << std::endl;
+        std::cout << "Error: please enter 2 or more argument." << std::endl;
     return (0);
 }

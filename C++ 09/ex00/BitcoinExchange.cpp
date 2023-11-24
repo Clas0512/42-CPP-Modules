@@ -23,7 +23,6 @@ BitcoinExchange::BitcoinExchange(BitcoinExchange const &instance)
 
 BitcoinExchange::~BitcoinExchange(void)
 {
-    std::cout << "Default Destructor Call" << std::endl;
     if (this->csvFile.is_open())
         csvFile.close();
     if (this->inputFile.is_open())
@@ -108,13 +107,18 @@ void	BitcoinExchange::start(void)
             inputInline = fillDateStruct(dateStr);
             try
             {
+                checkValue(valueStr);
                 inputInline->value = std::stof(valueStr);
             }
             catch(const std::exception& e)
             {
-                throw MyException("Type Casting Error.");
+                std::cout << e.what() << std::endl;
+                newLine = true;
+                break;
             }
         }
+        if (newLine == true)
+            continue;
         if (limitCheck(inputInline))
         {
             if (limitCheck(inputInline) == 3)
@@ -129,29 +133,33 @@ void	BitcoinExchange::start(void)
             continue;
         std::map<std::string, float>::iterator its = mapCsv.begin();
         std::map<std::string, float>::iterator expected = its;
-        if (strToSum(its->first) == strToSum(dateStr))
-            std::cout << dateStr << " => " << inputInline->value << " = " << inputInline->value * its->second << std::endl;
-        else
+        try
         {
-            int diff = strToSum(dateStr) - strToSum(its->first);
-            while (++its != mapCsv.end())
-            {
-                // std::cout << "cmpDate: " << dateStr << "  csv: " << its->first << "  cmpValue: " << inputInline->value << "  csvValue: " << its->second << std::endl;
-                if ((strToSum(dateStr) - strToSum(its->first)) >= 0)
-                {
-                    diff = strToSum(dateStr) - strToSum(its->first);
-                    expected = its;
-                }
-                else if ((strToSum(dateStr) - strToSum(its->first)) < 0)
-                    break;
-            }
-            if (diff >= 0)
-            {
-                // std::cout << "founded date: " << expected->first << "expected: " << dateStr << std::endl;
-                std::cout << dateStr << " => "<< inputInline->value << " = " << (inputInline->value * expected->second) << std::endl;
-            }
+            if (strToSum(its->first) == strToSum(dateStr))
+                std::cout << dateStr << " => " << inputInline->value << " = " << inputInline->value * its->second << std::endl;
             else
-                throw BitcoinExchange::MyException("Invalid date.");
+            {
+                int diff = strToSum(dateStr) - strToSum(its->first);
+                while (++its != mapCsv.end())
+                {
+                    // std::cout << "cmpDate: " << dateStr << "  csv: " << its->first << "  cmpValue: " << inputInline->value << "  csvValue: " << its->second << std::endl;
+                    if ((strToSum(dateStr) - strToSum(its->first)) >= 0)
+                    {
+                        diff = strToSum(dateStr) - strToSum(its->first);
+                        expected = its;
+                    }
+                    else if ((strToSum(dateStr) - strToSum(its->first)) < 0)
+                        break;
+                }
+                if (diff >= 0)
+                    std::cout << dateStr << " => "<< inputInline->value << " = " << (inputInline->value * expected->second) << std::endl;
+                else
+                    throw BitcoinExchange::MyException("Invalid date.");
+            }
+        }
+        catch(const std::exception& e)
+        {
+            std::cout << e.what() << std::endl;
         }
         delete inputInline;
     }
