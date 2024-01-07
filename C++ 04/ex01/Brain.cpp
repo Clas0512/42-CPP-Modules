@@ -14,7 +14,8 @@ Brain::Brain(const Brain &copy)
 Brain &	Brain::operator=(const Brain &copy)
 {
 	std::cout << "Brain Assignment Operator Overload Call" << std::endl;
-	*this->ideas = *copy.ideas;
+	for (int i = 0; i < 100; i++)
+		this->ideas[i] = copy.ideas[i];
 	return (*this);
 }
 

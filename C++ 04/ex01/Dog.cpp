@@ -24,6 +24,7 @@ Dog &Dog::operator=(const Dog &copy)
 {
     std::cout << "Dog Assignment Operator Overload Call" << std::endl;
     this->type = copy.type;
+	thisIsMyBrain = copy.thisIsMyBrain;
     return (*this);
 }
 
